@@ -1,0 +1,562 @@
+E:\Des\Stocks\db\backups\2023-12-09-stocks.db
+CHF 1.056
+DKK 0.134
+GBP 0.012
+NOK 0.085
+PLN 0.231
+SEK 0.089
+USD 0.929
+3I Group
+A2A
+AAK
+Aalberts Industries
+ABB
+ABN AMRO
+Accor
+Ackermans
+ACS
+Adecco N
+Adidas
+Admiral Group
+ADO Properties SARL
+Adyen
+Aedifica
+Aegon
+Aena
+Aeroports Paris
+AF AB
+Ageas
+Aggreko
+Ahold Delhaize
+AIB
+Air France KLM
+Air Liquide
+Airbus Group
+Aker BP
+Akzo Nobel
+Alcon
+Alfa Laval AB
+Allegro
+Allianz
+Allreal Holding
+Alstom
+Alstria
+Alten
+Amadeus
+Ambu
+Amplifon
+AMS
+Amundi
+Andritz AG
+Anglo American
+Anheuser Busch Inbev
+Antofagasta
+ArcelorMittal
+Argen-X
+Arkema
+Aroundtown
+Ashmore
+Ashtead Group
+ASM
+ASML Holding
+ASR Nederland
+ASSA ABLOY B
+Assicurazioni Generali
+Associated British Foods
+AstraZeneca
+Atlantia
+Atlas Copco A
+Atos
+Auto Trader Group Plc
+Avast
+Aveva
+Aviva
+AXA
+B&M European Value Retail SA
+BAE Systems
+Baloise Holding
+Banco Bpm
+Banco de Sabadell
+Bank Ireland
+Bank Polska Kasa Opieki
+Bankinter
+Barclays
+Barratt Developments
+Barry Callebaut
+BASF
+Bayer
+BBVA
+Beazley
+Bechtle AG
+Beiersdorf AG
+Beijer Ref
+Belimo Holding
+Bellway
+Berkeley
+BHP Group
+Biomerieux
+BMW ST
+BNP Paribas
+Boliden
+Bollore
+Bouygues
+BP
+Brenntag AG
+British American Tobacco
+British Land Company
+Britvic
+BT Group
+Bunzl
+Burberry Group
+Bureau Veritas
+Caixabank
+Campari
+Capgemini
+Capita
+Carl Zeiss AG
+Carlsberg B
+Carnival
+Carrefour
+Casino Guichard
+Castellum AB
+CD PROJEKT
+Cellnex Telecom
+Cembra Money Bank AG
+Centrica
+Chr Hansen
+Cineworld
+Clariant
+Close Brothers
+CNH Industrial NV
+CNP Assurances
+Coca Cola HBC AG
+Cofinimmo
+Coloplast
+Commerzbank
+Compass
+Continental AG
+ConvaTec Group
+Corbion
+Covestro
+Covivio
+Credit Agricole
+Credit Suisse
+CRH
+Croda Intl
+CTS Eventim AG
+Daimler
+Danone
+Danske Bank
+Dassault Aviation
+Dassault Systemes
+DCC
+Dechra Pharma
+Delivery Hero
+Demant
+Derwent
+Deutsche Bank AG
+Deutsche Boerse
+Deutsche Post
+Deutsche Telekom AG
+Deutsche Wohnen
+Diageo
+Dialog
+Diasorin
+Dino Polska
+Direct Line Insurance
+DnB
+Dometic Group publ AB
+DS Smith
+DSV
+Dufry
+E.ON SE
+Edenred
+EDP
+Eiffage
+Electricite de France
+Electrocomponents
+Electrolux B
+Elekta B
+Elia
+Elis Services SA
+Elisa Oyj
+Ems Chemie Hld
+Enagas
+Endesa
+Enel
+Engie
+Eni SpA
+Entain
+Epiroc A
+EQT AB
+Equinor
+Erste Group Bank AG
+EssilorLuxottica
+Essity B
+Etablissementen Franz Colruyt
+Eurazeo
+Eurofins Scientific
+Euronext
+Eutelsat
+Evolution Gaming
+Evonik
+Evotec AG
+Evraz
+Exor
+Experian
+Fabege
+Fastighets AB Balder B
+Faurecia
+Ferguson
+Ferrari NV
+Ferrovial
+FinecoBank
+Flughafen Zurich
+Flutter Entertainment
+Fortum
+Freenet AG
+Fresenius Medical Care
+Fresenius SE
+Fresnillo
+Fuchs Petrolub AG VZO Pref
+G4S
+Galapagos
+Galenica Sante
+Galp Energia
+Gamesa
+GBL
+GEA Group AG
+Geberit
+Gecina
+Genmab
+Georg Fischer
+Getinge B
+Getlink
+Givaudan
+Gjensidige Forsikring
+Glanbia PLC
+GlaxoSmithKline
+Glencore
+GN Store Nord
+Grand City
+Grenke
+Grifols
+Groupe SEB
+H&M B
+Halma
+Hammerson
+Hannover Rueckversicherung SE
+Hargreaves Lansdown
+Hays
+Heidelbergcement
+Heineken NV
+Hella KGaA Hueck & Co
+HelloFresh
+Helvetia
+Henkel VZO
+Hera
+Hermes International
+Hexagon B
+HEXPOL B
+Hikma Pharma
+Hiscox
+Holmen
+HomeServe
+Howden Joinery
+HSBC
+Hugo Boss AG
+Huhtamaki Oyj
+Husqvarna B
+IAG
+Iberdrola
+ICA Gruppen
+ICADE
+IG Group
+Iliad
+IMCD NV
+IMI PLC
+Immofinanz
+Imperial Brands
+Inchcape
+Inditex
+Industrivarden A
+Indutrade AB
+Infineon
+Informa
+ING Groep
+Inmobiliaria Colonial
+InterContinental
+Intermediate Capital
+Interpump
+Intertek
+Intesa Sanpaolo
+Investec
+Investor B
+Inwit
+Ipsen
+ISS A/S
+Italgas
+ITV
+IWG
+J Sainsbury
+JC Decaux
+JD Sports Fashion
+Jde Peets
+Jeronimo Martins
+John Wood
+Johnson Matthey
+Julius Baer
+Jupiter FM
+Just Eat Takeaway
+K&S AG
+KBC Groep
+Kering
+Kerry Group
+Kesko
+KGHM Polska Miedz
+Kingfisher
+Kingspan
+Kinnevik B
+Kion Group AG
+Klepierre
+Knorr-Bremse
+Kojamo
+KONE Oyj
+Koninklijke DSM
+Koninklijke KPN
+Kuehne & Nagel
+L'Oreal
+LafargeHolcim
+Lagardere
+Land Securities
+Lanxess AG
+LEG Immobilien AG
+Legal & General
+Legrand
+Leonardo
+Linde PLC
+Lindt & Spruengli N
+Lloyds Banking
+LM Ericsson B
+Logitech
+London Stock Exchange
+Londonmetric Property
+Lonza Group
+Louis Vuitton
+Lufthansa
+Lundbergforetagen B
+Orron Energy
+M&G
+Man Group
+Marks & Spencer
+Mediobanca
+Meggitt
+Melrose Industries
+Merck
+Merlin Properties SA
+Metro Wholesale
+Michelin
+Moller Maersk B
+Moncler SpA
+Mondi
+Morphosys AG
+Morrison Supermarkets
+Mowi
+MTU Aero
+Muench. Rueckvers.
+National Grid
+Natixis
+Naturgy Energy
+NatWest Group
+Nel ASA
+Nemetschek AG
+Neste Oil Oyj
+Nestle
+Nexi
+Next
+NIBE Industrier B
+NN Group NV
+Nokia Oyj
+Nokian Renkaat
+Nordea Bank
+Nordic Entertainment A
+Norsk Hydro
+Novartis
+Novo Nordisk B
+Novozymes B
+OC Oerlikon Corp
+Ocado
+OMV AG
+Orange
+Orion Oyj B
+Orkla
+ORLEN SA
+Orpea
+Orsted
+Osram Licht
+Pandora
+Partners Group
+Pearson
+Pennon
+Pernod Ricard
+Persimmon
+Philips
+Phoenix
+Pirelli & C
+PKO Bank Polski
+Polymetal
+Porsche
+Poste Italiane
+Prosiebensat
+Prosus
+Proximus
+Prudential
+Prysmian
+PSP Swiss Property
+Publicis Groupe
+Puma SE
+PZU SA
+Qiagen
+Quilter
+Raiffeisen Bank
+Randstad
+Reckitt Benckiser
+Recordati
+Red Electrica
+Relx
+Remy Cointreau
+Renault
+Rentokil
+Repsol
+Rexel
+Rheinmetall AG
+Richemont
+Rightmove
+Rio Tinto PLC
+Roche Holding Participation
+Rolls-Royce Holdings
+Rotork
+Royal Dutch Shell A
+Royal Mail
+Royal Unibrew
+RSA Insurance
+Rubis
+RWE AG ST
+Ryanair
+SAAB B
+Safran
+Sagax B
+Sage
+Saint Gobain
+Saipem
+SalMar
+Sampo Oyj A
+Sandvik AB
+Sanofi
+Santander
+Santander Bank Polska
+SAP
+Sartorius AG VZO
+Sartorius Stedim
+SBM Offshore
+SCA B
+Scatec Solar OL
+Schibsted A
+Schindler Ps
+Schneider Electric
+Schroders
+SCOR
+Scout24 AG
+SEB A
+Securitas B
+Segro
+SES
+Severn Trent
+SGS
+Siemens AG
+Siemens Healthineers
+SIG Combibloc
+Signify
+Sika
+Siltronic AG
+Simcorp A/S
+Skanska B
+SKF B
+Smith & Nephew
+Smiths Group
+Smurfit Kappa
+Snam
+Societe Generale
+Sodexo
+Sofina
+Softwareone
+Soitec
+Solvay
+Sonova H Ag
+Sopra Steria
+Spectris
+Spie
+Spirax-Sarco Engineering
+SSE
+SSP
+St. James’s Place
+Stadler Rail
+Standard Chartered
+Standard Life Aberdeen
+Stellantis NV
+STMicroelectronics
+Stora Enso Oyj R
+Storebrand
+Straumann Holding AG
+Subsea 7
+Suez
+Sunrise Communications AG
+Svenska Handelsbanken A
+Swatch Group
+Swedbank A
+Swedish Match
+Swedish Orphan Biovitrum
+Swiss Life Holding
+Swiss Prime Site
+Swiss Re
+Swisscom
+Symrise AG
+Tag Immobilien
+Tate&Lyle
+Taylor Wimpey
+Tecan Group
+TechnipFMC
+Tele2 AB
+Telecom Italia
+Telefonica
+Telefonica Deutschland AG
+Telenet
+Telenor
+Teleperformance
+Telia Company
+Temenos Group AG
+Tenaris
+Terna
+Tesco
+Thales
+THG Holdings
+Thyssenkrupp AG
+Tomra Systems
+Topdanmark A/S
+Total
+Travis Perkins
+Trelleborg B
+Tritax Big Box
+Tryg
+Tui
+Tullow Oil
+Ubisoft
+UBS Group
+UCB
+UDG Healthcare
+Umicore
+UniCredit
+Unilever
+Uniper SE
+Unite
+United Internet AG

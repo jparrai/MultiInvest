@@ -1,0 +1,1 @@
+"E:\Des\MultiInvest\venv\Scripts\python.exe" E:\Des\MultiInvest\main.py
