@@ -2,7 +2,6 @@ from globals import *
 from bs4 import BeautifulSoup
 import sqlite3 as sl
 
-import coefTrials
 import util
 import database
 from datetime import date
@@ -150,23 +149,29 @@ def updateSectors(dbPath, whereClause):
             if profileUnit is None:
                 print(link)
             else:
-                industryName = ''
                 if profileUnit.get_text()[:8] == "Industry":
                     industryName = profileUnit.get_text()[8:]
+                    industryUrl = profileUnit.find("a", href=True)['href']
+                    industry = industryUrl.split('industry::', 1)[-1].split('|')[0]
                 if profileUnit.get_text()[:6] == "Sector":
                     sectorName = profileUnit.get_text()[6:]
                     sectorUrl = profileUnit.find("a", href=True)['href']
                     sector = sectorUrl.split('sector::', 1)[-1].split('|')[0]
-                    sectorId = getSectorId(cursor, sector)
-                    cursor.execute('UPDATE STOCKS SET sector = ?, sectorName = ?, industryName = ? '
-                                   'WHERE id = ?', (sector, sectorName, industryName, link[1]))
+                    cursor.execute('UPDATE STOCKS SET sector = ?, industry = ?'
+                                   'WHERE id = ?', (sector, industry, link[1]))
+                    cursor.execute('INSERT OR IGNORE INTO SECTORS (id, name) VALUES (?,?)  '
+                                   , (sector, sectorName))
+                    cursor.execute('INSERT OR IGNORE INTO INDUSTRIES (id, name) VALUES (?,?) ', (industry, industryName))
+
                     dbCon.commit()
+                    print(link[1])
     dbCon.close()
     driver.quit()
 
 
 def getSectorId(cursor, sectorName):
-    cursorId = cursor.execute("SELECT id FROM SECTORS " + whereClause).fetchall()
+    cursorId = cursor.execute("SELECT id FROM SECTORS WHERE name = '" + sectorName + "'").fetchall()
+    return cursorId
 
 
 def updateCurrencies(dbPath):
@@ -193,8 +198,8 @@ def updateCurrencies(dbPath):
     driver.quit()
 
 
-# Get stock data linke dividen, beta, etc, for a
-def updateAllDataStocks(dbPath, whereClause):
+# Get stock data
+def updateAllDataStocks_Ant(dbPath, whereClause):
     dbConn = sl.connect(dbPath)
     dbConn.row_factory = sl.Row  # this for getting the column names
     cursor = dbConn.cursor()
@@ -216,6 +221,23 @@ def updateAllDataStocks(dbPath, whereClause):
         cursor.execute('UPDATE STOCKS SET per = ?, eps = ?, beta = ?, dividend = ?, marketCap = ? WHERE id = ?',
                        (per, eps, beta, dividend, marketCap, row['id']))
         dbConn.commit()
+        print(row['name'])
+    dbConn.close()
+    driver.quit()
+
+
+def updateAllDataStocks(dbPath, whereClause):
+    dbConn = sl.connect(dbPath)
+    dbConn.row_factory = sl.Row  # this for getting the column names
+    cursor = dbConn.cursor()
+    driver = util.getFirefoxDriver()
+
+    rows = cursor.execute("SELECT id,name,link FROM STOCKS " + whereClause).fetchall()
+    if rows is None:
+        print("No hay stocks que cumplan la cláusula: " + whereClause)
+        return
+    for row in rows:
+        updateStockData(dbConn, driver, row['id'], row['link'])
         print(row['name'])
     dbConn.close()
     driver.quit()
@@ -266,3 +288,64 @@ def updateAllStocksLastCloseAndPorcDiv():
     dbCon = sl.connect(DB_PATH)
     database.updateLastCloseAndPorcDiv(dbCon)
     dbCon.close()
+
+
+# Add a new stock with a given path of investing.com
+# the path is given manually
+def addNewStock(investingPath):
+
+    dbConn = sl.connect(DB_PATH)
+    dbConn.row_factory = sl.Row  # this for getting the column names
+    cursor = dbConn.cursor()
+    avgVol, beta, currency, dividend, eps, market, marketCap, name, per, zone = getStockData(investingPath)
+
+    cursor.execute('INSERT INTO STOCKS (currency, zone, market, link, name, per , eps , beta, dividend, '
+                   'marketCap, averageVol) VALUES (?,?,?,?,?,?,?,?,?,?)',
+                   (currency, zone, market, investingPath, name, per, eps, beta, dividend, marketCap, avgVol))
+    dbConn.commit()
+    print(cursor.lastrowid)
+    dbConn.close()
+
+
+def updateStockData(dbConn, driver, id, investingPath):
+    cursor = dbConn.cursor()
+    avgVol, beta, currency, dividend, eps, market, marketCap, name, per, zone = getStockDataFromDriver(driver, investingPath)
+
+    cursor.execute('UPDATE STOCKS SET currency = ?, zone = ?, market = ?, per = ?, eps = ?, beta = ?, dividend = ?, '
+                   'marketCap = ?, avgVol = ? WHERE id = ?',
+                   (currency, zone, market, per, eps, beta, dividend, marketCap, avgVol, id))
+    dbConn.commit()
+
+
+def getStockData(driver, investingPath):
+    try:
+        driver = util.getFirefoxDriver()
+        avgVol, beta, currency, dividend, eps, market, marketCap, name, per, zone = getStockDataFromDriver(driver,
+                                                                                                           investingPath)
+    except:
+        avgVol = beta = dividend = eps = marketCap = per = 0
+        currency = market = name = zone = ''
+    driver.quit()
+    return avgVol, beta, currency, dividend, eps, market, marketCap, name, per, zone
+
+
+def getStockDataFromDriver(driver, investingPath):
+    try:
+        driver.get(util.getSubLinkInvesting(investingPath))
+        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        name = soup.find("h1", class_="mb-2.5 text-left text-xl font-bold leading-7 text-[#232526] md:mb-2 md:text-3xl "
+                                      "md:leading-8 rtl:soft-ltr").text
+        profile = soup.find("div", class_="flex items-center pb-0.5 text-xs/5 font-normal")
+        currency = soup.find("span", class_="ml-1.5 font-bold").text
+        zone = 'US' if currency == 'USD' else "EU"
+        market = soup.find("span", class_="flex-shrink overflow-hidden text-ellipsis text-xs/5 font-normal").text
+        eps = util.getValueStockPage(soup, "eps")
+        marketCap = util.getValueStockPage(soup, "marketCap")
+        per = util.getValueStockPage(soup, "ratio")
+        dividend = util.getValueStockPage(soup, "dividend")
+        beta = util.getValueStockPage(soup, "beta")
+        avgVol = util.getValueStockPage(soup, "avgVolume")
+    except:
+        avgVol = beta = dividend = eps = marketCap = per = 0
+        currency = market = name = zone = ''
+    return avgVol, beta, currency, dividend, eps, market, marketCap, name, per, zone

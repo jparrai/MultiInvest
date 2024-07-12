@@ -8,8 +8,8 @@ dbConn = sqlite3.connect(DB_PATH)
 cursor = dbConn.cursor()
 
 # Opening the person-records.csv file
-file = open("E:/Des/Stocks/db/Sectors/tabula-STXLUXP.csv")
-SECTOR_ID = 901
+file = open("E:/Des/Stocks/db/Sectors/tabula-STOXX EUROPE 600 HEALTH CARE.csv")
+SECTOR_ID = 18
 # Reading the contents of the
 # person-records.csv file
 contents = csv.reader(file)

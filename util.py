@@ -58,9 +58,9 @@ def stripCid(link):
         return link[:cidIndex]
 
 
-def getFirefoxDriver(visible=False):
+def getFirefoxDriver(isVisible=False):
     fireFoxOptions = webdriver.FirefoxOptions()
-    fireFoxOptions.headless = not visible
+    fireFoxOptions.headless = not isVisible
     driver = webdriver.Firefox(options=fireFoxOptions)
     driver.implicitly_wait(10)
     return driver
@@ -154,12 +154,12 @@ def getValueStockPage(soup, key, text=False):
             return profile.text
         allProfile = profile.find_all("span")
         if allProfile is not None:
-            value = allProfile[1].text if len(allProfile) > 1 else ''
-            multiChar = allProfile[2].text if len(allProfile) > 2 else ''
+            value = allProfile[2].text if len(allProfile) > 1 else ''
+            multiChar = allProfile[3].text if len(allProfile) > 2 else ''
             value = value if text else numberPostFix2Number(value + multiChar)
         else:
             value = profile.text
     except Exception as e:
-        print('Error in getValueStockPage: ', e)
-        return None
+        # print('Error in getValueStockPage (' + key + "):", e)
+        return '' if text else 0
     return str(value)

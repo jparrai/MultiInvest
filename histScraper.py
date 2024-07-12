@@ -79,13 +79,22 @@ def testSetHistStartDate(driver, histDateTime, histDateTimeEnd=None):
 
 
 # Scrapes the prices, vol, etc from the hist page of Investing between the histDate and histDateEnd if present
-def scrapeHistPrices(dbPath, histDate: datetime, whereClause='', fromDate=False, histDateEnd: datetime = None):
+def scrapeHistPrices(dbPath, histDate: datetime, stock_id_min=0, stock_id_max=0, fromDate=False, histDateEnd: datetime = None):
     driver = util.getFirefoxDriver()
     dbCon = sl.connect(dbPath)
     cursor = dbCon.cursor()
+    whereClauseHist = " WHERE date >= '{}'".format(histDate.strftime("%Y-%m-%d"))
+    whereClauseStocks = " WHERE 1=1 "
+    if stock_id_min != 0 :
+        whereClauseStocks += ' AND id >= {}'.format(stock_id_min)
+        whereClauseHist += ' AND stock_id >= {}'.format(stock_id_min)
+    if stock_id_max != 0:
+        whereClauseStocks += ' AND id <= {}'.format(stock_id_max)
+        whereClauseHist +=  ' AND stock_id <= {}'.format(stock_id_max)
 
-    cursor.execute('DELETE FROM HIST WHERE date >= ?', (histDate.strftime("%Y-%m-%d"),))
-    stocks = cursor.execute('SELECT link, id, bestLinkVol FROM STOCKS ' + whereClause).fetchall()
+    cursor.execute('DELETE FROM HIST ' + whereClauseHist)
+    dbCon.commit()
+    stocks = cursor.execute('SELECT link, id, bestLinkVol FROM STOCKS ' + whereClauseStocks).fetchall()
 
     for stock in stocks:
         tryGetOneHistData(driver, cursor, histDate, histDateEnd, stock, fromDate, dbCon)
@@ -105,7 +114,8 @@ def tryGetOneHistData(driver, cursor, histDate, histDateEnd, stock, fromDate, db
         try:
             driver.get(util.getSubLinkInvesting(stockLink + str(bestLinkVol or ''), '-historical-data'))
             soupHist = BeautifulSoup(driver.page_source, 'html.parser')
-            tableHist = soupHist.find("table", class_="w-full text-xs leading-4 overflow-x-auto freeze-column-w-1")
+            tableHist = soupHist.find("table", class_="freeze-column-w-1 w-full overflow-x-auto text-xs leading-4")
+
             if tableHist is None:
                 print('stock ' + str(stockId) + ' has no table curr_table')
                 raise Exception('No curr_table, probably misload')

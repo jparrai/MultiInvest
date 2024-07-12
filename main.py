@@ -3,9 +3,8 @@ from globals import *
 import sys
 import logging
 import argparse
-from datetime import datetime, date
-from dateutil.relativedelta import relativedelta, MO
-
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 import scraper
 import histScraper
 
@@ -22,6 +21,7 @@ OPTION_UPDATE_SECTORS = 'update_sectors'
 OPTION_UPDATE_SECTORS_INV = 'update_sectors_inv'
 OPTION_UPDATE_STOCKS = 'update_stocks'
 OPTION_UPDATE_CURRENCIES = 'update_currencies'
+OPTION_ADD_STOCK = 'add_stock'
 OPTION_TEST = 'test'
 
 
@@ -79,7 +79,7 @@ elif args[FIRST_ARGUMENT] == OPTION_WEEKLY or args[FIRST_ARGUMENT] == OPTION_WEE
     logging.warning('Weekly in')
     database.backupDatabase()
 
-    date_obj = datetime.today() + relativedelta(days=-22)
+    date_obj = datetime.today() + relativedelta(days=-28)
     logging.warning(f'date {date_obj}')
 
     if args[FIRST_ARGUMENT] == OPTION_WEEKLY:
@@ -87,12 +87,20 @@ elif args[FIRST_ARGUMENT] == OPTION_WEEKLY or args[FIRST_ARGUMENT] == OPTION_WEE
         logging.warning('UpdateCurrencies out')
         scraper.updateAllDataStocks(DB_PATH, '')
         logging.warning('updateAllDataStocks out')
-    histScraper.scrapeHistPrices(DB_PATH, date_obj, "", True)
+
+    histScraper.scrapeHistPrices(DB_PATH, date_obj, stock_id_min=377, stock_id_max=0, fromDate=True)
     logging.warning('scraoeHistPrices out')
-    scraper.updateAllStocksLastCloseAndPorcDiv()
-    logging.warning('updateAllStocksLastClose... out')
-    scraper.calculateCoefs()
-    logging.warning('Weekly out')
+
+    if args[FIRST_ARGUMENT] == OPTION_WEEKLY:
+        scraper.updateAllStocksLastCloseAndPorcDiv()
+        logging.warning('updateAllStocksLastClose... out')
+        scraper.calculateCoefs()
+        logging.warning('Weekly out')
+elif args[FIRST_ARGUMENT] == OPTION_ADD_STOCK:
+    if args[SECOND_ARGUMENT] == "":
+        print("hay que introducir el path del nuevo artículo")
+        sys.exit(1)
+    scraper.addNewStock(DB_PATH, args[SECOND_ARGUMENT])
 elif args[FIRST_ARGUMENT] == OPTION_TEST:
     date_obj = datetime.today() + relativedelta(days=-22)
     histScraper.testScrapeHistPrices(DB_PATH, date_obj, "", True)
