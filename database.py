@@ -30,6 +30,7 @@ def check():
                    PRAGMA integrity_check
                        """).fetchone()[0]
     dbCon.close()
+
     return isOk == "ok"
 
 
