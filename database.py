@@ -18,7 +18,19 @@ def backupDatabase():
     backupName = str(date.today().isoformat()) + "-" + dbName
     backupPath = backupDir / backupName
     copyfile(DB_PATH, str(backupPath))
-    print (str(backupPath))
+    print(str(backupPath))
+
+
+# Check de database and returns true if it's ok, false if it's not
+def check():
+    dbCon = sl.connect(DB_PATH)
+    cursor = dbCon.cursor()
+
+    isOk = cursor.execute(f"""
+                   PRAGMA integrity_check
+                       """).fetchone()[0]
+    dbCon.close()
+    return isOk == "ok"
 
 
 # Caclulate the coef
